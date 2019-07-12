@@ -40,7 +40,7 @@ function submitAnswer() {
                 <h3 id="correct-answer">${correctAnswer}</h3>
                 <p id="additional-info">${additionalInfo}</p>
                 <button id="next-question-button">Next Question</button>
-                <img src="${feedbackImage}" alt="ALT INFO">
+                <img src="${feedbackImageSrc}" alt="${feedbackImageAlt}">
             </section>
         `);
 })}
