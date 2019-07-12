@@ -4,18 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Quiz questions</title>
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-    <main>
-        <header></header>
-        <section>
-            <form>
-                
-            </form>
-        </section>
-
-    </main>
-    
+    <section id="question-text">
+        <h2>Question NUM</h2>
+        <h3>QUESTION</h3>
+    </section>
+    <section id="answer-section">
+        <form id="answer-selector-form">
+            <fieldset id="answer-selector-field">
+                <label class="answerOption" for="answer-selector">
+                    <input type="radio" value="Answer1" name="answer" required>
+                        <span>Answer 1</span>
+                </label>
+                <label class="answerOption" for="answer-selector">
+                    <input type="radio" value="Answer2" name="answer" required>
+                    <span>Answer 2</span>
+                </label>
+                <label class="answerOption" for="answer-selector">
+                    <input type="radio" value="Answer3" name="answer" required>
+                    <span>Answer 3</span>
+                </label>
+                <label class="answerOption" for="answer-selector">
+                    <input type="radio" value="Answer4" name="answer" required>
+                    <span>Answer 4</span>
+                </label>
+                <button type="submit" id="answerSubmitButton" for="answer-selector">Submit</button>                                                  
+            </fieldset>
+            
+        </form>
+    </section>
 </body>
 </html>
