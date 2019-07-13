@@ -13,7 +13,7 @@ function startQuiz() {
     //replace body with question 1 page
     $("body").append(`
             <section id="question-text">
-                <h2>Question ${STORE.numOfCurrentQuestion}</h2>
+                <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
                 <h3>${currentQuestion.question}</h3>
             </section>
             <section id="answer-section">
@@ -39,6 +39,7 @@ function startQuiz() {
             </fieldset>
         
             </form>
+                <img src=${currentQuestion.questionImgSrc} alt=${currentQuestion.questionImgAlt}></img>
             </section>
         `);
 })}
@@ -55,15 +56,15 @@ function submitAnswer() {
         selectedAnswer = selectedAnswer.val();
         let currentQuestion = STORE.questions[STORE.numOfCurrentQuestion];
         console.log(currentQuestion);
-        let wasAnswerSubmitedCorrect = null;
         console.log(selectedAnswer);
+        let answerResult;
         //compare answer against actual answer for questionNum
         if (selectedAnswer === currentQuestion.correctAnswer) {
-            wasAnswerSubmitedCorrect = true;
-            NumOfCorrectAnswers++;
+            answerResult = "Correct!";
+            STORE.NumOfCorrectAnswers++;
         }
-        else if (selectedAnswer !== correctAnswer) {
-            wasAnswerSubmitedCorrect = false;
+        else if (selectedAnswer !== currentQuestion.correctAnswer) {
+            answerResult = "Incorrect!";
         }
         else {
             console.log("Something broke at Line 22 of index.js");
@@ -75,10 +76,10 @@ function submitAnswer() {
         $("body").append(`
             <section>
                 <h2 id="answer-result">${answerResult}</h2>
-                <h3 id="correct-answer">${correctAnswer}</h3>
-                <p id="additional-info">${additionalInfo}</p>
+                <h3 id="correct-answer">${currentQuestion.correctAnswer}</h3>
+                <p id="additional-info">${currentQuestion.additionalInfo}</p>
                 <button id="next-question-button">Next Question</button>
-                <img src="${feedbackImageSrc}" alt="${feedbackImageAlt}">
+                <img src="${currentQuestion.feedbackImgSrc}" alt="${currentQuestion.feedbackImgAlt}">
             </section>
         `);
 })}
