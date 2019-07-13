@@ -1,5 +1,6 @@
 'use strict';
-const STORE = [
+const STORE = {
+  questions:[
   {
     question: 'Who created Star Wars?',
     answers: [
@@ -151,5 +152,7 @@ const STORE = [
     feedbackImgSrc: "assets/midichlorians2.jpg",
     feedbackImgAlt: "Anakin getting a midi-chlorian count from Qui-Gon in The Phantom Menace."
     
-  }
-];
+  }],
+  numOfCorrectAnswers: 0,
+  numOfCurrentQuestion: 0
+}

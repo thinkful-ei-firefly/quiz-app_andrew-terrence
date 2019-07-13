@@ -3,24 +3,62 @@
 function startQuiz() {
     console.log("quiz started");
     //on button id "start-quiz" being submitted
+    $('#start-quiz').click(function (e) {
     //remove current body
+    $("main").remove();
+    STORE.numOfCurrentQuestion = 0;
+    let currentQuestion = STORE.questions[0];
+    console.log(currentQuestion);
+    STORE.numOfCorrectAnswers = 0;
     //replace body with question 1 page
-    //set questionNum to 1
-}
+    $("body").append(`
+            <section id="question-text">
+                <h2>Question ${STORE.numOfCurrentQuestion}</h2>
+                <h3>${currentQuestion.question}</h3>
+            </section>
+            <section id="answer-section">
+            <form id="answer-selector-form">
+            <fieldset id="answer-selector-field">
+                <label class="answerOption" for="answer-selector">
+                    <input type="radio" value="${currentQuestion.answers[0]}" name="answer" required>
+                    <span>${currentQuestion.answers[0]}</span>
+                </label>
+            <label class="answerOption" for="answer-selector">
+                <input type="radio" value="${currentQuestion.answers[1]}" name="answer" required>
+                <span>${currentQuestion.answers[1]}</span>
+            </label>
+            <label class="answerOption" for="answer-selector">
+                <input type="radio" value="${currentQuestion.answers[2]}" name="answer" required>
+                <span>${currentQuestion.answers[2]}</span>
+            </label>
+            <label class="answerOption" for="answer-selector">
+                <input type="radio" value="${currentQuestion.answers[3]}" name="answer" required>
+                <span>${currentQuestion.answers[3]}</span>
+            </label>
+            <button type="submit" id="answerSubmitButton" for="answer-selector">Submit</button>                                                  
+            </fieldset>
+        
+            </form>
+            </section>
+        `);
+})}
 
 function submitAnswer() {
     console.log("submitting answer");
     //on answerSubmitButton pressed
-    $('#answer-selector-form').submit(function(e) {
+    $('body').on('submit', (e) => {
+        console.log(e);
         e.preventDefault();
         //collect answer
         let selectedAnswer = $('input:checked');
         console.log(selectedAnswer);
         selectedAnswer = selectedAnswer.val();
-        //let correctAnswer = answer[questionNum];
+        let currentQuestion = STORE.questions[STORE.numOfCurrentQuestion];
+        console.log(currentQuestion);
+        let wasAnswerSubmitedCorrect = null;
         console.log(selectedAnswer);
         //compare answer against actual answer for questionNum
-        if (selectedAnswer === correctAnswer) {
+        if (selectedAnswer === currentQuestion.correctAnswer) {
             wasAnswerSubmitedCorrect = true;
             NumOfCorrectAnswers++;
         }
@@ -54,6 +92,8 @@ function nextQuestion() {
 function bootUp() {
     console.log("Booted up page");
     //Start all other monitoring functions
+    startQuiz();
+    submitAnswer();
 }
 
 bootUp()
