@@ -40,7 +40,7 @@ const STORE = {
       '$4.05 Billion',
       '$97.85 Million'
     ],
-    correctAnswer: '$4.05 billion',
+    correctAnswer: '$4.05 Billion',
     additionalInfo: 'Disney aquired the overall rights to Star Wars in 2012. It took 6 years for Star Wars to earn that money back.',
     questionImgSrc: "assets/mickey-jedi.jpg",
     questionImgAlt: "Mickey Mouse in a Jedi Robe",

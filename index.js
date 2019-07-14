@@ -12,11 +12,10 @@ function startQuiz() {
     STORE.numOfCorrectAnswers = 0;
     //replace body with question 1 page
     $("body").append(`
-            <section id="question-text">
+            <section id="answer-section">
                 <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
                 <h3>${currentQuestion.question}</h3>
-            </section>
-            <section id="answer-section">
+                <break>
             <form id="answer-selector-form">
             <fieldset id="answer-selector-field">
                 <label class="answerOption" for="answer-selector">
@@ -74,20 +73,66 @@ function submitAnswer() {
         $("question-text").remove();
         //replace body with feedback page
         $("body").append(`
-            <section>
+            <section id="feedback-section">
                 <h2 id="answer-result">${answerResult}</h2>
                 <h3 id="correct-answer">${currentQuestion.correctAnswer}</h3>
                 <p id="additional-info">${currentQuestion.additionalInfo}</p>
-                <button id="next-question-button">Next Question</button>
+                <button type=button id="next-question-button">Next Question</button>
                 <img src="${currentQuestion.feedbackImgSrc}" alt="${currentQuestion.feedbackImgAlt}">
             </section>
         `);
 })}
 
 function nextQuestion() {
+    $('body').on('click', '#next-question-button', (e) => {
+    e.preventDefault();
     console.log("moving to next question")
-    //if questionNum = 10, display results
-    //else questionNum++, set page to that question number's info
+    console.log(STORE.numOfCurrentQuestion);
+    if (STORE.numOfCurrentQuestion >= 9) {
+        displayResults();
+    }
+    else {
+        STORE.numOfCurrentQuestion++;
+        let currentQuestion = STORE.questions[STORE.numOfCurrentQuestion];
+        console.log(STORE.numOfCurrentQuestion);
+        $("#feedback-section").remove();
+        $("body").append(`
+            <section id="answer-section">
+                <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
+                <h3>${currentQuestion.question}</h3>
+            <form id="answer-selector-form">
+            <fieldset id="answer-selector-field">
+                <label class="answerOption" for="answer-selector">
+                    <input type="radio" value="${currentQuestion.answers[0]}" name="answer" required>
+                    <span>${currentQuestion.answers[0]}</span>
+                </label>
+            <label class="answerOption" for="answer-selector">
+                <input type="radio" value="${currentQuestion.answers[1]}" name="answer" required>
+                <span>${currentQuestion.answers[1]}</span>
+            </label>
+            <label class="answerOption" for="answer-selector">
+                <input type="radio" value="${currentQuestion.answers[2]}" name="answer" required>
+                <span>${currentQuestion.answers[2]}</span>
+            </label>
+            <label class="answerOption" for="answer-selector">
+                <input type="radio" value="${currentQuestion.answers[3]}" name="answer" required>
+                <span>${currentQuestion.answers[3]}</span>
+            </label>
+            <button type="submit" id="answerSubmitButton" for="answer-selector">Submit</button>                                                  
+            </fieldset>
+        
+            </form>
+                <img src=${currentQuestion.questionImgSrc} alt=${currentQuestion.questionImgAlt}></img>
+            </section>
+        `)
+    }})}
+
+function displayResults(){
+
+}
+
+function startOver() {
+
 }
 
 function bootUp() {
@@ -95,6 +140,9 @@ function bootUp() {
     //Start all other monitoring functions
     startQuiz();
     submitAnswer();
+    nextQuestion();
+    displayResults();
+    startOver();
 }
 
 bootUp()
