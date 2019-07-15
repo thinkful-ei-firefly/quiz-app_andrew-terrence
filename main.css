@@ -6,9 +6,16 @@ h1, h2, h3, p {
     padding: 5px;
     color: white;
 }
+
+
+
 button {
     background-color: rgb(104, 74, 0);
     color: white;
+}
+
+#answer-result {
+    text-decoration: underline;
 }
 
 .answerOption {
@@ -21,7 +28,7 @@ button {
 }
 
 .answerOption:hover {
-    background-color: RED;
+    border-color: rgb(72,138,172);
     cursor: pointer;
 }
 
@@ -109,7 +116,11 @@ footer > p {
 }
 
 .selected {
-    background-color: yellow;
+    border-color: rgb(91,201,125);
+}
+
+.selected:hover {
+    border-color: purple;
 }
 
 @media only screen and (min-width: 600px) {
