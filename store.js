@@ -4,7 +4,7 @@ const STORE = {
     {
       question: 'Who created Star Wars?',
       answers: [
-        'Luke SkyWalker',
+        'Luke Skywalker',
         'JJ Abrams',
         'Rian Johnson',
         'George Lucas'
