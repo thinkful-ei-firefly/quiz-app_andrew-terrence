@@ -17,33 +17,32 @@ function startQuiz() {
               <h1 id=score>0/10</h1>
             </header> </br>
             <section id="answer-section">
-                <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
-                <h3>${currentQuestion.question}</h3>
-                <break>
-            <form id="answer-selector-form">
-            <fieldset id="answer-selector-field">
-                <label class="answerOption" for="answer-selector">
-                    <input type="radio" value="${currentQuestion.answers[0]}" name="answer" required>
-                    <span>${currentQuestion.answers[0]}</span>
-                </label>
-            <label class="answerOption" for="answer-selector">
-                <input type="radio" value="${currentQuestion.answers[1]}" name="answer" required>
-                <span>${currentQuestion.answers[1]}</span>
-            </label>
-            <label class="answerOption" for="answer-selector">
-                <input type="radio" value="${currentQuestion.answers[2]}" name="answer" required>
-                <span>${currentQuestion.answers[2]}</span>
-            </label>
-            <label class="answerOption" for="answer-selector">
-                <input type="radio" value="${currentQuestion.answers[3]}" name="answer" required>
-                <span>${currentQuestion.answers[3]}</span>
-            </label>
-            <button type="submit" id="answerSubmitButton" for="answer-selector">Submit</button>                                                  
-            </fieldset>
-        
-            </form>
-                <img src=${currentQuestion.questionImgSrc} alt=${currentQuestion.questionImgAlt}></img>
-            </section>
+            <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
+            <h3>${currentQuestion.question}</h3>
+        <form id="answer-selector-form">
+        <fieldset id="answer-selector-field">
+            <div class="answerOption">
+                <input type="radio" value="${currentQuestion.answers[0]}" id="${currentQuestion.answers[0]}" name="answer" required>
+                <label for="${currentQuestion.answers[0]}">${currentQuestion.answers[0]}</label>
+            </div>
+            <div class="answerOption">
+              <input type="radio" value="${currentQuestion.answers[1]}" id="${currentQuestion.answers[1]}" name="answer" required>
+              <label for="${currentQuestion.answers[1]}">${currentQuestion.answers[1]}</label>
+            </div>
+            <div class="answerOption">
+              <input type="radio" value="${currentQuestion.answers[2]}" id="${currentQuestion.answers[2]}" name="answer" required>
+              <label for="${currentQuestion.answers[2]}">${currentQuestion.answers[2]}</label>
+            </div>
+            <div class="answerOption">
+              <input type="radio" value="${currentQuestion.answers[3]}" id="${currentQuestion.answers[3]}" name="answer" required>
+              <label for="${currentQuestion.answers[3]}">${currentQuestion.answers[3]}</label>
+            </div>
+          <button type="submit" id="answerSubmitButton" for="answer-selector">Submit</button>                                                  
+        </fieldset>
+    
+        </form>
+            <img src=${currentQuestion.questionImgSrc} alt=${currentQuestion.questionImgAlt}></img>
+        </section>
         `);
   });}
 
@@ -76,7 +75,11 @@ function submitAnswer() {
     $('#answer-section').remove();
     $('question-text').remove();
     //replace body with feedback page
-    $('body').append(`
+    $('body').html(`
+    <header>
+    <h1>Star Wars Quiz</h1>
+    <h1 id=score>${STORE.numOfCorrectAnswers}/10</h1>
+    </header> </br>
             <section id="feedback-section">
                 <h2 id="answer-result">${answerResult}</h2>
                 <h3 id="correct-answer">${currentQuestion.correctAnswer}</h3>
@@ -102,28 +105,32 @@ function nextQuestion() {
       console.log(STORE.numOfCurrentQuestion);
       $('#feedback-section').remove();
       $('body').html(`
-            <section id="answer-section">
+      <header>
+        <h1>Star Wars Quiz</h1>
+        <h1 id=score>${STORE.numOfCorrectAnswers}/10</h1>
+      </header> </br>      
+      <section id="answer-section">
                 <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
                 <h3>${currentQuestion.question}</h3>
             <form id="answer-selector-form">
             <fieldset id="answer-selector-field">
-                <label class="answerOption" for="answer-selector">
-                    <input type="radio" value="${currentQuestion.answers[0]}" name="answer" required>
-                    <span>${currentQuestion.answers[0]}</span>
-                </label>
-            <label class="answerOption" for="answer-selector">
-                <input type="radio" value="${currentQuestion.answers[1]}" name="answer" required>
-                <span>${currentQuestion.answers[1]}</span>
-            </label>
-            <label class="answerOption" for="answer-selector">
-                <input type="radio" value="${currentQuestion.answers[2]}" name="answer" required>
-                <span>${currentQuestion.answers[2]}</span>
-            </label>
-            <label class="answerOption" for="answer-selector">
-                <input type="radio" value="${currentQuestion.answers[3]}" name="answer" required>
-                <span>${currentQuestion.answers[3]}</span>
-            </label>
-            <button type="submit" id="answerSubmitButton" for="answer-selector">Submit</button>                                                  
+                <div class="answerOption">
+                    <input type="radio" value="${currentQuestion.answers[0]}" id="${currentQuestion.answers[0]}" name="answer" required>
+                    <label for="${currentQuestion.answers[0]}">${currentQuestion.answers[0]}</label>
+                </div>
+                <div class="answerOption">
+                  <input type="radio" value="${currentQuestion.answers[1]}" id="${currentQuestion.answers[1]}" name="answer" required>
+                  <label for="${currentQuestion.answers[1]}">${currentQuestion.answers[1]}</label>
+                </div>
+                <div class="answerOption">
+                  <input type="radio" value="${currentQuestion.answers[2]}" id="${currentQuestion.answers[2]}" name="answer" required>
+                  <label for="${currentQuestion.answers[2]}">${currentQuestion.answers[2]}</label>
+                </div>
+                <div class="answerOption">
+                  <input type="radio" value="${currentQuestion.answers[3]}" id="${currentQuestion.answers[3]}" name="answer" required>
+                  <label for="${currentQuestion.answers[3]}">${currentQuestion.answers[3]}</label>
+                </div>
+              <button type="submit" id="answerSubmitButton" for="answer-selector">Submit</button>                                                  
             </fieldset>
         
             </form>
@@ -133,6 +140,7 @@ function nextQuestion() {
     }});}
 
 function displayResults(){
+  $('header').html('<h1>Star Wars Quiz</h1>');
   if(STORE.numOfCorrectAnswers===10){
     $('body').html(
       `<section class='results'>
@@ -166,6 +174,10 @@ function displayResults(){
     </section>
     <button id='start-quiz'>Retry</button>`); 
   }
+  $('body').append(`    <footer>
+  <p>Quiz created by Andrew Jessen-Tyler and Terrence Harvey.</p>
+  <p>Images, story, setting, and other attributes of Star Wars are owned entirely by the copyright holders and are protected under Fair Use for educational purposes in this quiz.</p>
+</footer>`)
 }
 
 

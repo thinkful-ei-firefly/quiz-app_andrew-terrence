@@ -1,11 +1,40 @@
 h1, h2, h3, p {
     text-align: center;
-    max-width: 500px;
+    max-width: 1200px;
     display: flex;
     margin: auto;
     padding: 5px;
     color: white;
 }
+button {
+    background-color: rgb(104, 74, 0);
+    color: white;
+}
+
+.answerOption {
+    border: white 2px solid;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #010204;
+    text-align: center;
+    display: inline-block;
+}
+
+.answerOption:hover {
+    background-color: RED;
+    cursor: pointer;
+}
+
+input:checked > .answerOption {
+    background-color: yellow;
+}
+
+.answerOption > input {
+    float: left;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+}
+
 h1 {
     font-size: 24px;
 }
@@ -13,7 +42,6 @@ h1 {
 body {
     background-image: url("assets/background.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
     background-color: black;
 }
 
