@@ -1,20 +1,19 @@
+/* eslint-disable no-undef */
 'use strict';
 
 function startQuiz() {
-  console.log('quiz started');
   //on button id "start-quiz" being submitted
   $('body').on('click','#start-quiz',function (e) {
     //remove current body
     $('main').remove();
     STORE.numOfCurrentQuestion = 0;
     let currentQuestion = STORE.questions[0];
-    console.log(currentQuestion);
     STORE.numOfCorrectAnswers = 0;
     //replace body with question 1 page
     $('body').html(`
             <header>
-              <h1>Star Wars Quiz</h1>
-              <h1 id=score>0/10</h1>
+              <h1>Star Wars Quiz<br/>
+              Score:${STORE.numOfCorrectAnswers}/10</h1>
             </header> </br>
             <section id="answer-section">
             <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
@@ -47,18 +46,13 @@ function startQuiz() {
   });}
 
 function submitAnswer() {
-  console.log('submitting answer');
   //on answerSubmitButton pressed
   $('body').on('submit', (e) => {
-    console.log(e);
     e.preventDefault();
     //collect answer
     let selectedAnswer = $('input:checked');
-    console.log(selectedAnswer);
     selectedAnswer = selectedAnswer.val();
     let currentQuestion = STORE.questions[STORE.numOfCurrentQuestion];
-    console.log(currentQuestion);
-    console.log(selectedAnswer);
     let answerResult;
     //compare answer against actual answer for questionNum
     if (selectedAnswer === currentQuestion.correctAnswer) {
@@ -93,8 +87,6 @@ function submitAnswer() {
 function nextQuestion() {
   $('body').on('click', '#next-question-button', (e) => {
     e.preventDefault();
-    console.log('moving to next question');
-    console.log(STORE.numOfCurrentQuestion);
     STORE.numOfCurrentQuestion++;
     if (STORE.numOfCurrentQuestion === STORE.questions.length) {
       displayResults();
@@ -102,7 +94,6 @@ function nextQuestion() {
     else {
       
       let currentQuestion = STORE.questions[STORE.numOfCurrentQuestion];
-      console.log(STORE.numOfCurrentQuestion);
       $('#feedback-section').remove();
       $('body').html(`
       <header>
@@ -112,7 +103,7 @@ function nextQuestion() {
       <section id="answer-section">
                 <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
                 <h3>${currentQuestion.question}</h3>
-            <form id="answer-selector-form">
+            <form aria-label='Answer selector' id="answer-selector-form">
             <fieldset id="answer-selector-field">
                 <div class="answerOption">
                     <input type="radio" value="${currentQuestion.answers[0]}" id="${currentQuestion.answers[0]}" name="answer" required>
@@ -183,7 +174,6 @@ function displayResults(){
 
 
 function bootUp() {
-  console.log('Booted up page');
   //Start all other monitoring functions
   startQuiz();
   submitAnswer();
