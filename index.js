@@ -59,11 +59,8 @@ function submitAnswer() {
       answerResult = 'Correct!';
       STORE.numOfCorrectAnswers++;
     }
-    else if (selectedAnswer !== currentQuestion.correctAnswer) {
-      answerResult = 'Incorrect!';
-    }
     else {
-      console.log('Something broke at Line 22 of index.js');
+      answerResult = 'Incorrect!';
     }
     //remove current body
     $('#answer-section').remove();
