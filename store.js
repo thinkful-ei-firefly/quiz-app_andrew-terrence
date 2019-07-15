@@ -110,7 +110,7 @@ const STORE = {
     {
       question: 'The Rule of 2 states that there should only ever be 2 Sith: a master and an apprentice. Who invented this rule?',
       answers: [
-        'Darth Bane', 'Darth Sidious', 'Darth Vader', 'Darth Plaguis'
+        'Darth Bane', 'Darth Sidious', 'Darth Vader', 'Darth Plagueis'
       ],
       correctAnswer: 'Darth Bane',
       additionalInfo: ' "Two there should be. No more, no less. One to embody power, the other to crave it." -Darth Bane.',
