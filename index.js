@@ -137,7 +137,7 @@ function displayResults(){
     $('body').html(
       `<section class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
-      <p> Congratulations on a perfect score! The force is strong with you!</p>
+      <img src='assets/fargreater.jpg' alt='You have become a far greater Jedi than I could ever hope to be.'>
     </section>
     <button id='start-quiz'>Retry</button>`); 
 
@@ -146,7 +146,7 @@ function displayResults(){
     $('body').html(
       `<section class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
-      <p> The force is strong with you!</p>
+      <img src='assets/greatkid.jpg' alt='Great, Kid. Don't get cocky.'>
     </section>
     <button id='start-quiz'>Retry</button>`); 
   }
@@ -154,7 +154,7 @@ function displayResults(){
     $('body').html(
       `<section class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
-      <p> Your training is not complete. Seek a new master.</p>
+      <img src='assets/ihavefailedyou.jpg' alt='I have failed you, Anakin.'>
     </section>
     <button id='start-quiz'>Retry</button>`); 
   }
@@ -162,7 +162,7 @@ function displayResults(){
     $('body').html(
       `<section class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
-      <p> You need to watch everything in the Star Wars Universe.</p>
+      <img src='assets/amazing.jpg' alt='Amazing. Every word you said, was wrong.'>
     </section>
     <button id='start-quiz'>Retry</button>`); 
   }
