@@ -130,24 +130,38 @@ function nextQuestion() {
     }});}
 
 function displayResults(){
-  if(STORE.numOfCorrectAnswers>=6){
+  if(STORE.numOfCorrectAnswers===10){
+    $('body').html(
+      `<section class='results'>
+      <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
+      <p> Congratulations on a perfect score! The force is strong with you!</p>
+    </section>
+    <button id='start-quiz'>Retry</button>`); 
+
+  }
+  else if(STORE.numOfCorrectAnswers >=5 && STORE.numOfCorrectAnswers < 10){
     $('body').html(
       `<section class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
       <p> The force is strong with you!</p>
     </section>
     <button id='start-quiz'>Retry</button>`); 
-
   }
-  else {
+  else if(STORE.numOfCorrectAnswers>=1 && STORE.numOfCorrectAnswers<5) {
     $('body').html(
       `<section class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
       <p> Your training is not complete. Seek a new master.</p>
     </section>
     <button id='start-quiz'>Retry</button>`); 
-
-
+  }
+  else {
+    $('body').html(
+      `<section class='results'>
+      <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
+      <p> You need to watch everything in the Star Wars Universe.</p>
+    </section>
+    <button id='start-quiz'>Retry</button>`); 
   }
 }
 
