@@ -64,7 +64,7 @@ function submitAnswer() {
     <h1 id=score>${STORE.numOfCorrectAnswers}/10</h1>
     </header> </br>
             <section aria-label='Feedback section' id="feedback-section">
-                <h2 id="answer-result">${answerResult}</h2>
+                <h2 id="answer-result">You got Question ${STORE.numOfCurrentQuestion+1} ${answerResult}</h2>
                 <h3 id="correct-answer">${currentQuestion.correctAnswer}</h3>
                 <p id="additional-info">${currentQuestion.additionalInfo}</p>
                 <button type=button id="next-question-button">Next Question</button>
@@ -126,8 +126,10 @@ function displayResults(){
       `<header>
       <h1>Star Wars Quiz</h1>
       </header>
-      <section aria-label='Quiz results' class='results'>
+      <section>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
+      </section>
+      <section aria-label='Quiz results' class='results'>
       <img src='assets/fargreater.jpg' alt='You have become a far greater Jedi than I could ever hope to be.'>
     </section>
     <button id='start-quiz'>Retry</button>`); 
@@ -138,33 +140,39 @@ function displayResults(){
       `<header>
       <h1>Star Wars Quiz</h1>
       </header>
-      <section aria-label='Quiz results' class='results'>
+      <section>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
+      </section>
+      <section aria-label='Quiz results' class='results'>
       <img src='assets/greatkid.jpg' alt='Great, Kid. Don't get cocky.'>
-    </section>
-    <button id='start-quiz'>Retry</button>`); 
+      <button id='start-quiz'>Retry</button>
+      </section>`); 
   }
   else if(STORE.numOfCorrectAnswers>=1 && STORE.numOfCorrectAnswers<5) {
     $('body').html(
       `<header>
       <h1>Star Wars Quiz</h1>
-      </<header>
+      </header>
+      <section>
+      </section>
       <section aria-label='Quiz results' class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
       <img src='assets/ihavefailedyou.jpg' alt='I have failed you, Anakin.'>
-    </section>
-    <button id='start-quiz'>Retry</button>`); 
+      <button id='start-quiz'>Retry</button>
+      </section>`); 
   }
   else {
     $('body').html(
       `<header>
       <h1>Star Wars Quiz</h1>
       </header>
-      <section aria-label='Quiz results' class='results'>
+      <section>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
+      </section>
+      <section aria-label='Quiz results' class='results'>
       <img src='assets/amazing.jpg' alt='Amazing. Every word you said, was wrong.'>
-    </section>
-    <button id='start-quiz'>Retry</button>`); 
+      <button id='start-quiz'>Retry</button>
+      </section>`); 
   }
   $('body').append(`    <footer>
   <p>Quiz created by Andrew Jessen-Tyler and Terrence Harvey.</p>
