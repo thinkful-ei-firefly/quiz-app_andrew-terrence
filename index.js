@@ -12,9 +12,9 @@ function startQuiz() {
     //replace body with question 1 page
     $('body').html(`
             <header>
-              <h1>Star Wars Quiz<br/>
-              Score:${STORE.numOfCorrectAnswers}/10</h1>
-            </header> </br>
+              <h1>Star Wars Quiz</h1>
+              <h1 id=score>${STORE.numOfCorrectAnswers}/10</h1>
+            </header> </br>     
             <section id="answer-section">
             <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
             <h3>${currentQuestion.question}</h3>
