@@ -2,14 +2,11 @@
 'use strict';
 
 function startQuiz() {
-  //on button id "start-quiz" being submitted
   $('body').on('click','#start-quiz',function (e) {
-    //remove current body
     $('main').remove();
     STORE.numOfCurrentQuestion = 0;
     let currentQuestion = STORE.questions[0];
     STORE.numOfCorrectAnswers = 0;
-    //replace body with question 1 page
     $('body').html(`
             <header>
               <h1>Star Wars Quiz</h1>
@@ -18,7 +15,7 @@ function startQuiz() {
             <section id="answer-section">
             <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
             <h3>${currentQuestion.question}</h3>
-        <form id="answer-selector-form">
+        <form aria-label='Answer selector form' id="answer-selector-form">
         <fieldset id="answer-selector-field">
             <div class="answerOption">
                 <input type="radio" value="${currentQuestion.answers[0]}" id="${currentQuestion.answers[0]}" name="answer" required>
@@ -43,19 +40,16 @@ function startQuiz() {
             <img src=${currentQuestion.questionImgSrc} alt=${currentQuestion.questionImgAlt}></img>
         </section>
         `);
-        selectionListener();        
+    selectionListener();        
   });}
 
 function submitAnswer() {
-  //on answerSubmitButton pressed
   $('body').on('submit', (e) => {
     e.preventDefault();
-    //collect answer
     let selectedAnswer = $('input:checked');
     selectedAnswer = selectedAnswer.val();
     let currentQuestion = STORE.questions[STORE.numOfCurrentQuestion];
     let answerResult;
-    //compare answer against actual answer for questionNum
     if (selectedAnswer === currentQuestion.correctAnswer) {
       answerResult = 'Correct!';
       STORE.numOfCorrectAnswers++;
@@ -63,16 +57,14 @@ function submitAnswer() {
     else {
       answerResult = 'Incorrect!';
     }
-    //remove current body
     $('#answer-section').remove();
     $('question-text').remove();
-    //replace body with feedback page
     $('body').html(`
     <header>
     <h1>Star Wars Quiz</h1>
     <h1 id=score>${STORE.numOfCorrectAnswers}/10</h1>
     </header> </br>
-            <section id="feedback-section">
+            <section aria-label='Feedback section' id="feedback-section">
                 <h2 id="answer-result">${answerResult}</h2>
                 <h3 id="correct-answer">${currentQuestion.correctAnswer}</h3>
                 <p id="additional-info">${currentQuestion.additionalInfo}</p>
@@ -101,7 +93,7 @@ function nextQuestion() {
       <section id="answer-section">
                 <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
                 <h3>${currentQuestion.question}</h3>
-            <form aria-label='Answer selector' id="answer-selector-form">
+            <form aria-label='Answer selector form' id="answer-selector-form">
             <fieldset id="answer-selector-field">
                 <div class="answerOption">
                     <input type="radio" value="${currentQuestion.answers[0]}" id="${currentQuestion.answers[0]}" name="answer" required>
@@ -126,7 +118,7 @@ function nextQuestion() {
                 <img src=${currentQuestion.questionImgSrc} alt=${currentQuestion.questionImgAlt}></img>
             </section>
         `);
-        selectionListener();
+      selectionListener();
     }});}
 
 function displayResults(){
@@ -135,7 +127,7 @@ function displayResults(){
       `<header>
       <h1>Star Wars Quiz</h1>
       </header>
-      <section class='results'>
+      <section aria-label='Quiz results' class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
       <img src='assets/fargreater.jpg' alt='You have become a far greater Jedi than I could ever hope to be.'>
     </section>
@@ -147,7 +139,7 @@ function displayResults(){
       `<header>
       <h1>Star Wars Quiz</h1>
       </header>
-      <section class='results'>
+      <section aria-label='Quiz results' class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
       <img src='assets/greatkid.jpg' alt='Great, Kid. Don't get cocky.'>
     </section>
@@ -158,7 +150,7 @@ function displayResults(){
       `<header>
       <h1>Star Wars Quiz</h1>
       </<header>
-      <section class='results'>
+      <section aria-label='Quiz results' class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
       <img src='assets/ihavefailedyou.jpg' alt='I have failed you, Anakin.'>
     </section>
@@ -169,7 +161,7 @@ function displayResults(){
       `<header>
       <h1>Star Wars Quiz</h1>
       </header>
-      <section class='results'>
+      <section aria-label='Quiz results' class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
       <img src='assets/amazing.jpg' alt='Amazing. Every word you said, was wrong.'>
     </section>
@@ -178,25 +170,22 @@ function displayResults(){
   $('body').append(`    <footer>
   <p>Quiz created by Andrew Jessen-Tyler and Terrence Harvey.</p>
   <p>Images, story, setting, and other attributes of Star Wars are owned entirely by the copyright holders and are protected under Fair Use for educational purposes in this quiz.</p>
-</footer>`)
+</footer>`);
 }
 
 function selectionListener() {
-  console.log("selection listener running");
   $('input:radio').change(function(){
-    console.log("testing");
-    $('.selected').removeClass('selected')
+    $('.selected').removeClass('selected');
     if($(this).is(':checked')){
       
-        $(this).parent().addClass('selected'); }
-   else 
-       $(this).parent().removeClass('selected')
+      $(this).parent().addClass('selected'); }
+    else 
+      $(this).parent().removeClass('selected');
   });
  
 }
 
 function bootUp() {
-  //Start all other monitoring functions
   startQuiz();
   submitAnswer();
   nextQuestion();
