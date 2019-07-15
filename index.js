@@ -4,7 +4,7 @@
 function startQuiz() {
   console.log('quiz started');
   //on button id "start-quiz" being submitted
-  $('#start-quiz').click(function (e) {
+  $('body').on('click','#start-quiz',function (e) {
     //remove current body
     $('main').remove();
     STORE.numOfCurrentQuestion = 0;
@@ -12,7 +12,7 @@ function startQuiz() {
     console.log(currentQuestion);
     STORE.numOfCorrectAnswers = 0;
     //replace body with question 1 page
-    $('body').append(`
+    $('body').html(`
             <section id="answer-section">
                 <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
                 <h3>${currentQuestion.question}</h3>
@@ -42,7 +42,7 @@ function startQuiz() {
                 <img src=${currentQuestion.questionImgSrc} alt=${currentQuestion.questionImgAlt}></img>
             </section>
         `);
-  })}
+  });}
 
 function submitAnswer() {
   console.log('submitting answer');
@@ -61,7 +61,7 @@ function submitAnswer() {
     //compare answer against actual answer for questionNum
     if (selectedAnswer === currentQuestion.correctAnswer) {
       answerResult = 'Correct!';
-      STORE.NumOfCorrectAnswers++;
+      STORE.numOfCorrectAnswers++;
     }
     else if (selectedAnswer !== currentQuestion.correctAnswer) {
       answerResult = 'Incorrect!';
@@ -82,22 +82,23 @@ function submitAnswer() {
                 <img src="${currentQuestion.feedbackImgSrc}" alt="${currentQuestion.feedbackImgAlt}">
             </section>
         `);
-  })}
+  });}
 
 function nextQuestion() {
   $('body').on('click', '#next-question-button', (e) => {
     e.preventDefault();
     console.log('moving to next question');
     console.log(STORE.numOfCurrentQuestion);
-    if (STORE.numOfCurrentQuestion >= 9) {
+    STORE.numOfCurrentQuestion++;
+    if (STORE.numOfCurrentQuestion === STORE.questions.length) {
       displayResults();
     }
     else {
-      STORE.numOfCurrentQuestion++;
+      
       let currentQuestion = STORE.questions[STORE.numOfCurrentQuestion];
       console.log(STORE.numOfCurrentQuestion);
       $('#feedback-section').remove();
-      $('body').append(`
+      $('body').html(`
             <section id="answer-section">
                 <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
                 <h3>${currentQuestion.question}</h3>
@@ -125,16 +126,16 @@ function nextQuestion() {
             </form>
                 <img src=${currentQuestion.questionImgSrc} alt=${currentQuestion.questionImgAlt}></img>
             </section>
-        `)
-    }})}
+        `);
+    }});}
 
 function displayResults(){
+    
+  $('body').html(`<section><h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2></section><button id='start-quiz'>Retry</button>`); 
 
 }
 
-function startOver() {
 
-}
 
 function bootUp() {
   console.log('Booted up page');
@@ -142,8 +143,7 @@ function bootUp() {
   startQuiz();
   submitAnswer();
   nextQuestion();
-  displayResults();
-  startOver();
+  
 }
 
 bootUp();
