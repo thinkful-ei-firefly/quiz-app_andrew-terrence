@@ -154,9 +154,9 @@ function displayResults(){
       <h1>Star Wars Quiz</h1>
       </header>
       <section>
+      <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
       </section>
       <section aria-label='Quiz results' class='results'>
-      <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
       <img src='assets/ihavefailedyou.jpg' alt='I have failed you, Anakin.'>
       <button id='start-quiz'>Retry</button>
       </section>`); 
