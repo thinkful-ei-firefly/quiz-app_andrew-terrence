@@ -123,7 +123,7 @@ function nextQuestion() {
 function displayResults(){
   if(STORE.numOfCorrectAnswers===10){
     $('body').html(
-      `<header>
+      `<header role='banner'>
       <h1>Star Wars Quiz</h1>
       </header>
       <section aria-label='Quiz results' class='results'>
@@ -135,7 +135,7 @@ function displayResults(){
   }
   else if(STORE.numOfCorrectAnswers >=5 && STORE.numOfCorrectAnswers < 10){
     $('body').html(
-      `<header>
+      `<header role='banner'>
       <h1>Star Wars Quiz</h1>
       </header>
       <section aria-label='Quiz results' class='results'>
@@ -146,7 +146,7 @@ function displayResults(){
   }
   else if(STORE.numOfCorrectAnswers>=1 && STORE.numOfCorrectAnswers<5) {
     $('body').html(
-      `<header>
+      `<header role='banner'>
       <h1>Star Wars Quiz</h1>
       </<header>
       <section aria-label='Quiz results' class='results'>
@@ -157,7 +157,7 @@ function displayResults(){
   }
   else {
     $('body').html(
-      `<header>
+      `<header role='banner'>
       <h1>Star Wars Quiz</h1>
       </header>
       <section aria-label='Quiz results' class='results'>
