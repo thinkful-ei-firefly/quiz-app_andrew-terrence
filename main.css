@@ -4,9 +4,29 @@ h1, h2, h3, p {
     display: flex;
     margin: auto;
     padding: 5px;
+    color: white;
 }
 h1 {
     font-size: 24px;
+}
+
+body {
+    background-image: url("assets/background.jpg");
+}
+
+header {
+    display: flex;
+    padding-bottom: 10px;
+    border: 1px solid black;
+}
+footer {
+    margin-top: auto;
+    margin-bottom: 5px;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
 }
 button {
     height: 50px;
@@ -46,6 +66,11 @@ label {
     display: block;
     text-align: center;
     font-size: 16px;
+    color: white;
+}
+
+footer > p {
+    font-size: 12px;
 }
 
 @media only screen and (min-width: 600px) {
@@ -54,6 +79,9 @@ label {
     }
     h1 {
         font-size: 36px;
+    }
+    footer > p {
+        font-size: 18px;
     }
 }
 
@@ -64,5 +92,8 @@ label {
 
     h1 {
         font-size: 60px;
+    }
+    footer > p {
+        font-size: 1vw;
     }
 }

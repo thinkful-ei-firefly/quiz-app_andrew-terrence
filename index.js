@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 'use strict';
 
 function startQuiz() {
@@ -13,6 +12,10 @@ function startQuiz() {
     STORE.numOfCorrectAnswers = 0;
     //replace body with question 1 page
     $('body').html(`
+            <header>
+              <h1>Star Wars Quiz</h1>
+              <h1 id=score>0/10</h1>
+            </header> </br>
             <section id="answer-section">
                 <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
                 <h3>${currentQuestion.question}</h3>
