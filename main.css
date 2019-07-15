@@ -75,6 +75,11 @@ button {
     margin-left: auto;
     margin-right: auto;
 }
+
+button:hover {
+    cursor: pointer;
+}
+
 section {
     width: 50%;
     margin-right: auto;
@@ -120,6 +125,8 @@ footer > p {
 .selected:hover {
     border-color: purple;
 }
+
+
 
 @media only screen and (min-width: 600px) {
     label {
