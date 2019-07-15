@@ -43,6 +43,7 @@ function startQuiz() {
             <img src=${currentQuestion.questionImgSrc} alt=${currentQuestion.questionImgAlt}></img>
         </section>
         `);
+        selectionListener();        
   });}
 
 function submitAnswer() {
@@ -125,6 +126,7 @@ function nextQuestion() {
                 <img src=${currentQuestion.questionImgSrc} alt=${currentQuestion.questionImgAlt}></img>
             </section>
         `);
+        selectionListener();
     }});}
 
 function displayResults(){
@@ -171,13 +173,26 @@ function displayResults(){
 </footer>`)
 }
 
-
+function selectionListener() {
+  console.log("selection listener running");
+  $('input:radio').change(function(){
+    console.log("testing");
+    $('.selected').removeClass('selected')
+    if($(this).is(':checked')){
+      
+        $(this).parent().addClass('selected'); }
+   else 
+       $(this).parent().removeClass('selected')
+  });
+ 
+}
 
 function bootUp() {
   //Start all other monitoring functions
   startQuiz();
   submitAnswer();
   nextQuestion();
+  selectionListener();
   
 }
 

@@ -25,8 +25,12 @@ button {
     cursor: pointer;
 }
 
-input:checked > .answerOption {
-    background-color: yellow;
+label:hover {
+    cursor: pointer;
+}
+
+input:hover {
+    cursor: pointer;
 }
 
 .answerOption > input {
@@ -102,6 +106,10 @@ label {
 
 footer > p {
     font-size: 12px;
+}
+
+.selected {
+    background-color: yellow;
 }
 
 @media only screen and (min-width: 600px) {
