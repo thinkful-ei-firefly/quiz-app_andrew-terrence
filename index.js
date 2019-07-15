@@ -133,9 +133,25 @@ function nextQuestion() {
     }});}
 
 function displayResults(){
-    
-  $('body').html(`<section><h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2></section><button id='start-quiz'>Retry</button>`); 
+  if(STORE.numOfCorrectAnswers>=6){
+    $('body').html(
+      `<section class='results'>
+      <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
+      <p> The force is strong with you!</p>
+    </section>
+    <button id='start-quiz'>Retry</button>`); 
 
+  }
+  else {
+    $('body').html(
+      `<section class='results'>
+      <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
+      <p> Your training is not complete. Seek a new master.</p>
+    </section>
+    <button id='start-quiz'>Retry</button>`); 
+
+
+  }
 }
 
 
