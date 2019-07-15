@@ -12,14 +12,14 @@ function startQuiz() {
     //replace body with question 1 page
     $('body').html(`
             <header>
-              <h1>Star Wars Quiz</h1>
-              <h1 id=score>0/10</h1>
+              <h1>Star Wars Quiz<br/>
+              Score:${STORE.numOfCorrectAnswers}/10</h1>
             </header> </br>
             <section id="answer-section">
                 <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
                 <h3>${currentQuestion.question}</h3>
                 <break>
-            <form id="answer-selector-form">
+            <form aria-label='Answer selector' id="answer-selector-form">
             <fieldset id="answer-selector-field">
                 <label class="answerOption" for="answer-selector">
                     <input type="radio" value="${currentQuestion.answers[0]}" name="answer" required>
@@ -94,9 +94,9 @@ function nextQuestion() {
       $('#feedback-section').remove();
       $('body').html(`
             <section id="answer-section">
-                <h2>Question ${STORE.numOfCurrentQuestion + 1}</h2>
+                <h2>Question ${STORE.numOfCurrentQuestion + 1} <br/> Score:${STORE.numOfCorrectAnswers}/10</h2>
                 <h3>${currentQuestion.question}</h3>
-            <form id="answer-selector-form">
+            <form aria-label='Answer selector' id="answer-selector-form">
             <fieldset id="answer-selector-field">
                 <label class="answerOption" for="answer-selector">
                     <input type="radio" value="${currentQuestion.answers[0]}" name="answer" required>
