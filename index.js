@@ -131,10 +131,10 @@ function nextQuestion() {
     }});}
 
 function displayResults(){
-  $('header').html('<h1>Star Wars Quiz</h1>');
   if(STORE.numOfCorrectAnswers===10){
     $('body').html(
-      `<section class='results'>
+      `<h1>Star Wars Quiz</h1>
+      <section class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
       <img src='assets/fargreater.jpg' alt='You have become a far greater Jedi than I could ever hope to be.'>
     </section>
@@ -143,7 +143,8 @@ function displayResults(){
   }
   else if(STORE.numOfCorrectAnswers >=5 && STORE.numOfCorrectAnswers < 10){
     $('body').html(
-      `<section class='results'>
+      `<h1>Star Wars Quiz</h1>
+      <section class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
       <img src='assets/greatkid.jpg' alt='Great, Kid. Don't get cocky.'>
     </section>
@@ -151,7 +152,8 @@ function displayResults(){
   }
   else if(STORE.numOfCorrectAnswers>=1 && STORE.numOfCorrectAnswers<5) {
     $('body').html(
-      `<section class='results'>
+      `<h1>Star Wars Quiz</h1>
+      <section class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
       <img src='assets/ihavefailedyou.jpg' alt='I have failed you, Anakin.'>
     </section>
@@ -159,7 +161,8 @@ function displayResults(){
   }
   else {
     $('body').html(
-      `<section class='results'>
+      `<h1>Star Wars Quiz</h1>
+      <section class='results'>
       <h2>Your total score is ${STORE.numOfCorrectAnswers}/${STORE.questions.length}</h2>
       <img src='assets/amazing.jpg' alt='Amazing. Every word you said, was wrong.'>
     </section>
